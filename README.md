@@ -1,26 +1,57 @@
-## Overview
-Repository creates for fast running development process with configuration, which are the same from project to project.
+# JDA Spring Boot Starter
 
-## Building
-...
+This simple [JDA](https://github.com/DV8FromTheWorld/JDA) Spring Boot starter allows 
+to register bots in spring context automatically and also use them as standard spring beans.
 
-## Troubleshooting
-...
+## Usage
 
-## Release Notes
-Can be found in [RELEASE_NOTES](RELEASE_NOTES.md).
+**Add repository**
+```xml
+<repositories>
+    <repository>
+        <id>jitpack.io</id>
+        <url>https://jitpack.io</url>
+    </repository>
+</repositories>
+```
 
-## Authors
-* Alexey Strelchuk - [isa1412](https://github.com/isa1412)
+**Add dependency**
+```xml
+<dependency>
+    <groupId>com.github.Isa1412</groupId>
+    <artifactId>jda-spring-boot-starter</artifactId>
+    <version>VERSION</version>
+</dependency>
+```
 
-## Acknowledgments
-...
+## How to use
 
-## Contributing
-Please, follow [Contributing](CONTRIBUTING.md) page.
+Your main spring boot class should look like this:
+```java
+@SpringBootApplication
+public class YourApplicationMainClass {
 
-## Code of Conduct
-Please, follow [Code of Conduct](CODE_OF_CONDUCT.md) page.
+    public static void main(String[] args) {
+        SpringApplication.run(YourApplicationMainClass.class, args);
+    }
+}
+```
 
-## License
-This project is Apache License 2.0 - see the [LICENSE](LICENSE) file for details
+Your `application.properties` should look like this:
+```yaml
+spring.jda.token=PAST_YOUR_BOT_TOKEN
+```
+
+After that your `EventListener` will look like:
+```java
+@JDAEventListener
+public class ReadyListener implements EventListener {
+
+    @Override
+    public void onEvent(GenericEvent event) {
+        if (event instanceof ReadyEvent) {
+            System.out.println("API is ready!");
+        }
+    }
+}
+```
