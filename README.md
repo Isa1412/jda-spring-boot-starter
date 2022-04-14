@@ -3,27 +3,6 @@
 This simple [JDA](https://github.com/DV8FromTheWorld/JDA) Spring Boot starter allows 
 to register bots in spring context automatically and also use them as standard spring beans.
 
-## Usage
-
-**Add repository**
-```xml
-<repositories>
-    <repository>
-        <id>jitpack.io</id>
-        <url>https://jitpack.io</url>
-    </repository>
-</repositories>
-```
-
-**Add dependency**
-```xml
-<dependency>
-    <groupId>com.github.Isa1412</groupId>
-    <artifactId>jda-spring-boot-starter</artifactId>
-    <version>VERSION</version>
-</dependency>
-```
-
 ## How to use
 
 Your main spring boot class should look like this:
